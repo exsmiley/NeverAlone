@@ -2,6 +2,7 @@ angapp.controller('mainController', function($scope, $http) {
 	$scope.formData = {};
 	$scope.name = "bob";
 	$scope.showBob = true;
+	$scope.isLoggedIn = false;
 
 	$scope.toggleBob = function() {
 		$scope.showBob = !$scope.showBob;
@@ -29,5 +30,13 @@ angapp.controller('mainController', function($scope, $http) {
 			.error(function(data) {
 				console.log("Error: " + data);
 			});
+	};
+
+	$scope.logIn = function() {
+		$scope.isLoggedIn = true;
+	};
+
+	$scope.logOut = function() {
+		$scope.isLoggedIn = false;
 	};
 });
