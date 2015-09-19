@@ -15,8 +15,11 @@ var methodOverride = require("method-override");
 	console.log(err);
 });*/
 mongoose.connect('mongodb://me:you@ds051553.mongolab.com:51553/fun', function(err) {
-	console.log(err);
+	if(err)
+		console.log(err);
 });
+
+console.log(mongoose.connection.readyState);
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
@@ -27,13 +30,11 @@ app.use(methodOverride());
 
 
 // model for users
-var userSchema = new Schema({
+var User = mongoose.model('User', {
 	username: String, // username will just be the email of the person
 	password: String,
 	cellNumber: String
 });
-
-var User = mongoose.model('User', userSchema);
 
 // API!!!!
 // returns all of the users... probably won't want this to always be a thing unless you're an admin
@@ -50,18 +51,16 @@ app.get('/api/users', function(req, res) {
 app.post('/api/new-user', function(req, res) {
 	console.log("I am trying to make a new user");
 	//creates a user, info comes from AJAX request from Angular
-	var newUser = User({
+	console.log(req.body);
+	User.create({
 		username: req.body.username,
 		password: req.body.password,
 		cellNumber: req.body.cellNumber
+	}, function(err, user) {
+		if(err) {
+			res.send(err);
+		}
 	});
-
-	newUser.save(function(err) {
-		if(err) throw err;
-		console.log("Created a user!");
-		res.send(newUser);
-	});
-
 
 });
 
@@ -91,6 +90,15 @@ app.get('/mainController.js', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/controllers/mainController.js'));
 });
 
+app.get('/navbarDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/navbarDirective.js'));
+})
+
+//send html templates
+app.get('/navbar', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/navbar.html'));
+})
+
 app.get('/signinDirective.js', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/directives/signinDirective.js'));
 });
@@ -104,6 +112,33 @@ app.get('/signin', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/signin.html'));
 })
 
+
+app.get('/homeMainDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/homeMainDirective.js'));
+})
+
+//send html templates
+app.get('/homeMain', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/homeMain.html'));
+})
+
+app.get('/profileDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/profileDirective.js'));
+})
+
+//send html templates
+app.get('/profile', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/profile.html'));
+})
+
+app.get('/createEventDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/createEventDirective.js'));
+})
+
+//send html templates
+app.get('/createEvent', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/createEvent.html'));
+})
 var server = app.listen(process.env.PORT || 3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;

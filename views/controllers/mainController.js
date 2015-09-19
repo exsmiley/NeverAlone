@@ -2,6 +2,7 @@ angapp.controller('mainController', function($scope, $http) {
 	$scope.formData = {};
 	$scope.name = "bob";
 	$scope.showBob = true;
+	$scope.isLoggedIn = false;
 
 	$scope.toggleBob = function() {
 		$scope.showBob = !$scope.showBob;
@@ -38,14 +39,22 @@ angapp.controller('mainController', function($scope, $http) {
 	// creates a new account
 	$scope.createAccount = function() {
 		console.log("I'm doing something");
-		$scope.formData = {};
-		$scope.formData.username = $scope.newEmail;
+		//$scope.formData = {};
+		/*$scope.formData.username = $scope.newEmail;
 		$scope.formData.password = $scope.newPassword;
-		$scope.formData.cellNumber = $scope.newCellNumber;
+		$scope.formData.cellNumber = $scope.newCellNumber;*/
+		console.log($scope.formData);
 		$scope.createUser();
 		$scope.newEmail = "";
 		$scope.newPassword = "";
 		$scope.newCellNumber = "";
 		console.log("I don't care")
 	}
+	$scope.logIn = function() {
+		$scope.isLoggedIn = true;
+	};
+
+	$scope.logOut = function() {
+		$scope.isLoggedIn = false;
+	};
 });
