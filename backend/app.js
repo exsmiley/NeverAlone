@@ -9,6 +9,13 @@ var morgan = require('morgan');
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
+var get_ip = require('ipware')().get_ip;
+/*app.use(function(req, res, next) {
+    var ip_info = get_ip(req);
+    console.log(ip_info);
+    // { clientIp: '127.0.0.1', clientIpRoutable: false }
+    next();
+});*/
 
 //configuration taken from https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular
 /*mongoose.createConnection('mongodb://data:data@jello.modulusmongo.net:27017/j6iqUjid', function(err) {
@@ -78,6 +85,8 @@ app.delete('/api/users/:user_id', function(req, res) {
 
 //used for loading the homepage
 app.get("/", function(req, res) {
+	var ip_info = get_ip(req);
+    console.log(ip_info);
 	res.sendfile(path.join(__dirname+'/../views/index.html'));
 });
 
