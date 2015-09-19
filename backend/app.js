@@ -74,6 +74,15 @@ app.get("/", function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/index.html'));
 });
 
+//send scripts we need?
+app.get('/core.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/core.js'));
+});
+
+app.get('/mainController.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/controllers/mainController.js'));
+});
+
 var server = app.listen(process.env.PORT || 3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;
