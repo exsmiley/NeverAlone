@@ -12,10 +12,19 @@
 	</head>
 
 	<body ng-app="hackmit2015" ng-controller="mainController">
+		<div signin ng-hide="isLoggedIn"></div>
+		
+		
+		
+		<div navBar ng-show="isLoggedIn"></div>
+		<div asdf ng-show="isLoggedIn"></div>
 		
 	</body>
 
 	<!-- Other angular scripts -->
 	<script src="/mainController.js"></script>
 	<script src="/signinDirective.js"></script>
+	<script src="/navBarDirective.js"></script>
+	<script src="/asdfDirective.js"></script>
+	<script src="/profileDirective.js"></script>
 </html>
