@@ -1,0 +1,26 @@
+{
+  "name": "hackmit-2015",
+  "version": "1.0.0",
+  "description": "Packages for our project",
+  "main": "backend/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exsmiley/hackmit-2015.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/exsmiley/hackmit-2015/issues"
+  },
+  "homepage": "https://github.com/exsmiley/hackmit-2015#readme",
+  "dependencies": {
+    "express": "~4.7.2",
+    "mongoose": "~3.6.2",
+    "morgan": "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2"
+  }
+}
