@@ -148,6 +148,12 @@ app.get('/createEventDirective.js', function(req, res) {
 app.get('/createEvent', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/createEvent.html'));
 })
+
+app.get('/stylesheet', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/stylesheet.css'));
+})
+
+
 var server = app.listen(process.env.PORT || 3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;

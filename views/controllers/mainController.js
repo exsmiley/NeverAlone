@@ -3,6 +3,7 @@ angapp.controller('mainController', function($scope, $http) {
 	$scope.name = "bob";
 	$scope.showBob = true;
 	$scope.isLoggedIn = false;
+	$scope.userTab = 0;
 
 	$scope.toggleBob = function() {
 		$scope.showBob = !$scope.showBob;
