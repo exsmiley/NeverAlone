@@ -83,6 +83,15 @@ app.get('/mainController.js', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/controllers/mainController.js'));
 });
 
+app.get('/signinDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/signinDirective.js'));
+})
+
+//send html templates
+app.get('/signin', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/signin.html'));
+})
+
 var server = app.listen(process.env.PORT || 3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;

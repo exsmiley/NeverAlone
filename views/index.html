@@ -31,8 +31,10 @@
 		Enter a name for Bob's friend: <input ng-model="friend"></input>
 		<h4 ng-hide="friend">Bob has no friends</h4>
 		<h4 ng-show="friend">Bob has a friend named {{friend}}</h4>
+		<div signin ng-show="showBob"></div>
 	</body>
 
 	<!-- Other angular scripts -->
 	<script src="/mainController.js"></script>
+	<script src="/signinDirective.js"></script>
 </html>
