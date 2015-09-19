@@ -26,6 +26,11 @@
 		    </div>
 		  </div>
 		</nav>
+		<h3 ng-show="showBob"> {{ name }}</h3>
+		<button ng-click="toggleBob()"> Hide Bob </button>
+		Enter a name for Bob's friend: <input ng-model="friend"></input>
+		<h4 ng-hide="friend">Bob has no friends</h4>
+		<h4 ng-show="friend">Bob has a friend named {{friend}}</h4>
 	</body>
 
 	<!-- Other angular scripts -->

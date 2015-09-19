@@ -1,6 +1,11 @@
 angapp.controller('mainController', function($scope, $http) {
 	$scope.formData = {};
-	$scope.bob = "bob";
+	$scope.name = "bob";
+	$scope.showBob = true;
+
+	$scope.toggleBob = function() {
+		$scope.showBob = !$scope.showBob;
+	}
 
 	// creates a new user
 	$scope.createUser = function() {
