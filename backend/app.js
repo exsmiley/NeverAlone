@@ -83,6 +83,15 @@ app.get('/mainController.js', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/controllers/mainController.js'));
 });
 
+app.get('/navbarDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/navbarDirective.js'));
+})
+
+//send html templates
+app.get('/navbar', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/navbar.html'));
+})
+
 app.get('/signinDirective.js', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/directives/signinDirective.js'));
 })
@@ -92,6 +101,33 @@ app.get('/signin', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/signin.html'));
 })
 
+
+app.get('/homeMainDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/homeMainDirective.js'));
+})
+
+//send html templates
+app.get('/homeMain', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/homeMain.html'));
+})
+
+app.get('/profileDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/profileDirective.js'));
+})
+
+//send html templates
+app.get('/profile', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/profile.html'));
+})
+
+app.get('/createEventDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/createEventDirective.js'));
+})
+
+//send html templates
+app.get('/createEvent', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/createEvent.html'));
+})
 var server = app.listen(process.env.PORT || 3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;
