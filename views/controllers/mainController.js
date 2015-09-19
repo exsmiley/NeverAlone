@@ -9,15 +9,19 @@ angapp.controller('mainController', function($scope, $http) {
 
 	// creates a new user
 	$scope.createUser = function() {
+		console.log("trying to post");
 		$http.post('/api/new-user', $scope.formData)
 			.success(function(data) {
+				console.log("hi");
 				// clears the form since we do not need the data anymore
 				$scope.formData = {};
 				console.log("new user made!");
+				console.log(data);
 			})
 			.error(function(data) {
 				console.log("Error: " + data);
 			});
+		console.log("stuff");
 	};
 
 	// deletes a user after checking it
@@ -30,4 +34,18 @@ angapp.controller('mainController', function($scope, $http) {
 				console.log("Error: " + data);
 			});
 	};
+
+	// creates a new account
+	$scope.createAccount = function() {
+		console.log("I'm doing something");
+		$scope.formData = {};
+		$scope.formData.username = $scope.newEmail;
+		$scope.formData.password = $scope.newPassword;
+		$scope.formData.cellNumber = $scope.newCellNumber;
+		$scope.createUser();
+		$scope.newEmail = "";
+		$scope.newPassword = "";
+		$scope.newCellNumber = "";
+		console.log("I don't care")
+	}
 });

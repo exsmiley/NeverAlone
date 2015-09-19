@@ -34,18 +34,18 @@
                 <div class="modal-body">
                   <form role="form">
                     <div class="form-group">
-                      <label for="email">Email:</label>
+                      <label for="email" ng-model="newEmail">Email:</label>
                       <input type="email" class="form-control" id="email">
                     </div>
                     <div class="form-group">
-                      <label for="pwd">Password:</label>
+                      <label for="pwd" ng-model="newPassword">Password:</label>
                       <input type="password" class="form-control" id="pwd">
                     </div>
                     <div class="form-group">
-                      <label for="num">Cell Phone Number:</label>
+                      <label for="num" ng-model="newCellNumber">Cell Phone Number:</label>
                       <input type="text" class="form-control" id="num">
                     </div>
-                    <button type="submit" class="btn btn-default">Create my account!</button>
+                    <button type="submit" class="btn btn-default" ng-click="createAccount()">Create my account!</button>
                   </form>
                 </div>
                 <div class="modal-footer">
