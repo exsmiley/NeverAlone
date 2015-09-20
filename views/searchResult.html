@@ -6,11 +6,29 @@
 	<h4> Search Results! </h4>
 	<div ng-repeat="event in events | filter:searchText">
 		<div class="row">
+<<<<<<< HEAD
 			<table>
+				{{event}}
+				<tr><th class="col-md-3">{{event.name}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-3">event.time</th></tr>
+				<tr><th>{{event.category}}</th><th><button>Join</button></th></tr>
+				<tr><th>{{event.address}}</th></tr>
+=======
+			<!--
+			<table class="table table-striped">
+				<tr>
+				    <th>{{event.name}}</th>
+				    <th>{{event.date}}</th> 
+				    <th>{{event.time}}</th>
+				    <th>{{event.category}}</th>
+				    <th><button>Join</button></th>
+				</tr>
+			<table>-->
 				<tr><th class="col-md-3">{{event.name}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-3">{{event.time}}</th></tr>
 				<tr><th>{{event.category}}</th><th><button>Join</button></th></tr>
+>>>>>>> 5c6c33cb50caa0ff47c136570252c968d8c3c8d0
 				<tr><th>{{event.description}}</th></tr>
 			</table>
+			
 		</div>
 	</body>
 	</html>
