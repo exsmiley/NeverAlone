@@ -68,9 +68,11 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 				// clears the form since we do not need the data anymore
 				$scope.ev = {};
 				console.log("new event made!");
+				return true
 			})
 			.error(function(data) {
 				console.log("Error: " + data);
+				return false
 			});
 	}
 

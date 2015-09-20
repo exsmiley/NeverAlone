@@ -1,81 +1,61 @@
 <html>
-
+<head>
+  <link rel="stylesheet" type="text/css" href="/styleProfile">
+</head>
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h2>Hello, {{user.firstName}}!</h2>
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="height:45px;width:60px">Edit</button>
-        <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
+      </div>
+      <div class="col-md-8">
+        <button type="button" class="btn btn-info btn-lg" ng-click="clickUserTab(2)">Host an event</button>
+      </div>
+    </div>
 
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Enter your interests here</h4>
-              </div>
-              <div class="modal-body">
-                <form role="form">
-                  <div class="form-group">
-                    <label for="interests">First Name:</label>
-                    <input type="interest" class="form-control" id="firstName"  ng-model="formData.lastName">
-                  </div>
-                  <div class="form-group">
-                    <label for="interests">Last Name:</label>
-                    <input type="interest" class="form-control" id="lastName"  ng-model="formData.lastName">
-                  </div>
-                  <div class="form-group">
-                    <label for="interests">Interests:</label>
-                    <input type="interest" class="form-control" id="interest"  ng-model="formData.interests">
-                  </div>
-                  <button type="submit" class="btn btn-default" ng-click="createAccount()" data-dismiss="modal">OK</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading"><h4>Interests</h4></div>
+          <!-- List group -->
+          <ul class="list-group">
+            <li class="list-group-item">Sports</li>
+            <li class="list-group-item">Music</li>
+            <li class="list-group-item">PSetting</li>
+          </ul>
         </div>
-
-
-      </br>
-      <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><h4>Interests</h4></div>
-        <!-- List group -->
-        <ul class="list-group">
-          <li class="list-group-item">Sports</li>
-          <li class="list-group-item">Music</li>
-          <li class="list-group-item">PSetting</li>
-        </ul>
+      </div>
+      <div class="col-md-6">
+        <img class="thumbnail center-block" src="https://scontent.xx.fbcdn.net/hphotos-xat1/v/t34.0-12/12030659_901626583224347_1848126269_n.jpg?oh=a813885dd4e9acddf5132e9339313dd9&oe=56005B1A" style="width:250px;height:250px">
       </div>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-4">
-      <img class="thumbnail" src="https://scontent.xx.fbcdn.net/hphotos-xat1/v/t34.0-12/12030659_901626583224347_1848126269_n.jpg?oh=a813885dd4e9acddf5132e9339313dd9&oe=56005B1A" style="width:250px;height:250px">
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><h4>Events Attending</h4></div>
-        <!-- List group -->
-        <ul class="list-group">
-          <li class="list-group-item">This time</li>
-          <li class="list-group-item">Blah</li>
-          <li class="list-group-item">JDKLFASF;</li>
-        </ul>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading"><h4>Events Attending</h4></div>
+          <!-- List group -->
+          <ul class="list-group">
+            <li class="list-group-item">This time</li>
+            <li class="list-group-item">Blah</li>
+            <li class="list-group-item">JDKLFASF;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 center-block">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading"><h4>Events You're Hosting</h4></div>
+          <!-- List group -->
+          <ul class="list-group">
+            <li class="list-group-item">This time</li>
+            <li class="list-group-item">Blah</li>
+            <li class="list-group-item">JDKLFASF;</li>
+          </ul>
+        </div>
       </div>
     </div>
-
-    <div class="col-md-6">
-      <button type="button" class="btn btn-info btn-lg" ng-click="clickUserTab(2)">Host an event</button>
-    </div>
-
   </div>
-</div>
 </body>
 </html>
