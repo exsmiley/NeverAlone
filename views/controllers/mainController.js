@@ -97,6 +97,15 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			})
 	}
 
+	$scope.joinEvent = function(id) {
+		$http.post('/api/joinEvent', {id:id,username:$scope.userData.username})
+			.then(function(data) {
+				console.log("I worked")
+			}, function(err) {
+				console.log("Error: " + err);
+			})
+	}
+
 	// creates a new account
 	$scope.createAccount = function() {
 		$scope.createUser();
