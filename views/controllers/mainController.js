@@ -30,7 +30,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		$scope.userTab = number;
 	}
 
-	$scope.selectCategory = function(cat) {
+	$scope.setCategory = function(cat) {
 		$scope.ev.category = cat;
 	}
 

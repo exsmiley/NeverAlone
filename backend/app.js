@@ -137,7 +137,7 @@ app.post('/api/login', function(req, res) {
 })
 
 app.get('/api/events', function(req, res) {
-	User.find(function(err, events) {
+	Event.find(function(err, events) {
 		if(err) {
 			res.send(err);
 		}
