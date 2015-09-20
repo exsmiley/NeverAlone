@@ -2,7 +2,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.formData = {};
 	$scope.name = "bob";
 	$scope.showBob = true;
-	$scope.isLoggedIn = false;
+	$scope.isLoggedIn = true;
 	$scope.userTab = 0;
 	$scope.go = true;
 	$scope.ev = {};
