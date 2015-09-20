@@ -16,7 +16,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.userData.lastName = "is Hated";
 	$scope.userData.username = "zhated@sadface.com";
 	$scope.userData.cellNumber = "0000001111";
-	$scope.userData.interests = ["Sports"];
+	$scope.userData.interests = ["Sports", "Music"];
 	$scope.userData.attending = ["55fe49a37b8944361b00000a",
         "55fe4abe3219b68507000001"];
 	$scope.userData.hosting = ["55fe7428c4a0366f09000002"];
