@@ -83,6 +83,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	}
 
 	$scope.logIn = function() {
+		console.log("work");
 		$http.post('/api/login', $scope.login)
 			.then(function(data) {
 				$scope.login = {};
@@ -101,6 +102,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			});
 		if(!$scope.isLoggedIn) {
 			$scope.loginError = true;
+			console.log($scope.loginError);
 		}
 		//$scope.isLoggedIn = true;
 	};

@@ -114,8 +114,10 @@ app.get('/api/loggedin', function(req, res) {
 
 // logs in the user
 app.post('/api/login', function(req, res) {
+	console.log('got a post');
 	//res.send(true);
 	User.find({username: req.body.username}, function(err, user) {
+		console.log(req.body);
 		if(user&&user[0]) {
 			console.log(user[0].password);
 			console.log(req.body.password);
