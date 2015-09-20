@@ -230,6 +230,14 @@ app.get('/searchResult', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/searchResult.html'));
 })
 
+app.get('/searchMyEventsDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/searchMyEventsDirective.js'));
+})
+
+app.get('/s', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/searchMyEvents.html'));
+})
+
 app.get('/stylesheet', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/stylesheet.css'));
 })
