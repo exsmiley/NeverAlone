@@ -122,6 +122,15 @@ app.get('/api/loggedin', function(req, res) {
 	res.send(false);
 });
 
+app.get('/api/getUser', function(req, res) {
+	console.log("searching")
+	User.findOne({username: req.body.username}, function(err, user) {
+		console.log("grr");
+		console.log(user);
+		res.send(user);
+	})
+})
+
 // logs in the user
 app.post('/api/login', function(req, res) {
 	console.log('got a post');
@@ -134,11 +143,11 @@ app.post('/api/login', function(req, res) {
 			if(user[0].password === req.body.password) {
 				console.log("same")
 				req.session.username = user[0].username;
-				res.send(true);
+				res.send(user[0]);
 			}
 			else {
 				console.log("other")
-				res.send(false);
+				res.send({});
 			}
 		}
 		

@@ -122,14 +122,17 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		console.log("work");
 		$http.post('/api/login', $scope.login)
 			.then(function(data) {
-				$scope.login = {};
-				if(!data) {
+				if(!data.data.username) {
 					$scope.loginError = true;
 					data = {}
-					data.data = false;
+					$scope.isLoggedIn = false;
 				}
-				$scope.isLoggedIn = data.data;
-				console.log("Login: " + data.data);
+				else {
+					$scope.isLoggedIn = true;
+					$scope.userData = data.data;
+					console.log($scope.userData);
+				}
+				console.log("Login: " + $scope.isLoggedIn);
 				if($scope.isLoggedIn) {
 					$scope.loginError = false;
 				}
