@@ -2,15 +2,10 @@
 <html>
 <body>
 	<h4> Search Results! </h4>
-	<div ng-repeat="event in events | filter: interest in interests">
-		<div class="row">
-			<table>
-				{{event}}
-				<tr><th class="col-md-3">{{event.name}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-3">event.time</th></tr>
-				<tr><th>{{event.category}}</th><th><button>Join</button></th></tr>
-				<tr><th>{{event.address}}</th></tr>
-				<tr><th>{{event.description}}</th></tr>
-			</table>		
-		</div>
+	<tr><th>Name</th><th>Date</th><th>Time</th><th>Category</th><th></th></tr>
+	<tr ng-repeat="event in events | filter:interest in interests"><th class="col-md-3">{{event.name}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-2">{{event.time}}</th>
+		<th>{{event.category}}</th><th><button class="btn btn-default" data-toggle="collapse" data-target="#{{event._id}}">Detail</button><div id="{{event._id}}" class="collapse" style="font-size:10pt">
+		{{event.description}}
+	</div></th><th><button type="button" class="btn btn-default" ng-click="joinEvent(event._id)">Join</button></th></tr>
 </body>
 </html>

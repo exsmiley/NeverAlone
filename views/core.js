@@ -14,3 +14,4 @@ angapp.filter('interestFilter', function() {
 	    return output;
 	}
 });
+
