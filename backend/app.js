@@ -34,7 +34,7 @@ var User = mongoose.model('User', {
 	lastName: String,
 	password: String,
 	cellNumber: String,
-	interests: Array
+	interests: Array,
 });
 
 var Event = mongoose.model('Event', {
@@ -42,6 +42,7 @@ var Event = mongoose.model('Event', {
 	category: String,
 	time: String,
 	date: String,
+	address: String,
 	description: String,
 });
 
