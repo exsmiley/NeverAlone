@@ -10,11 +10,11 @@
   		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
   		<script src="/core.js"></script>
   		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJRznPmQx7jKwY7sF4Qh_DB-xXt1tN-oM"></script>
-<script src="/map"></script>
+		<script src="/map"></script>
   		<style type="text/css">
-      html, body { height: 100%; margin: 0; padding: 0; }
-      #map { height: 85%; }
-    </style>
+	      html, body { height: 100%; margin: 0; padding: 0; }
+	      #map { height: 85%; }
+    	</style>
 	</head>
 
 	<body ng-app="hackmit2015" ng-controller="mainController">
@@ -23,10 +23,10 @@
 		<div navbar ng-show="isLoggedIn"></div>
 		<div home-main ng-show="isLoggedIn&&userTab===0"></div>
 		<map ng-show="go||(isLoggedIn&&userTab===0)" zoom="11" center="[42.358379,-71.096284]" id="map">
-  <marker position="[42.358379, -71.096284]" />
-  <shape name="circle" radius="400" center="[40.74,-74.18]" radius="4000" />
-  <control name="overviewMap" opened="true" />
-</map>`  
+		  <marker position="[42.358379, -71.096284]" />
+		  <shape name="circle" radius="400" center="[40.74,-74.18]" radius="4000" />
+		  <control name="overviewMap" opened="true" />
+		</map>
 		<div profile ng-show="isLoggedIn&&userTab===1"></div>
 		<div create-event ng-show="isLoggedIn&&userTab===2"></div>
 		<div search-result ng-show="isLoggedIn&&userTab===3"></div>

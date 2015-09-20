@@ -30,6 +30,8 @@ app.use(methodOverride());
 // model for users
 var User = mongoose.model('User', {
 	username: String, // username will just be the email of the person
+	firstName: String,
+	lastName: String,
 	password: String,
 	cellNumber: String,
 	interests: Array
@@ -131,6 +133,15 @@ app.post('/api/login', function(req, res) {
 	})
 	//res.send(false);
 })
+
+app.get('/api/events', function(req, res) {
+	User.find(function(err, events) {
+		if(err) {
+			res.send(err);
+		}
+		res.json(events);
+	});
+});
 
 //used for loading the homepage
 app.get("/", function(req, res) {

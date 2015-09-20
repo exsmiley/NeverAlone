@@ -1,7 +1,17 @@
-.row {
-	background: url('http://www.priotime.com/wp-content/uploads/2013/10/Happy-People-Prioritize.jpg');
+h1{
+    font-family: 'Papyrus';
+    font-size: 500%;
+}
+
+body {
+	background: url('http://www.hungryforchange.tv/images/happypeople.jpg');
+	background-size: 100%;
 }
 
 button {
 	color: blue;
+}
+
+.panel {
+   background: rgba(152, 219, 201, 0.5);
 }
