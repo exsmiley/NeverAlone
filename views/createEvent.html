@@ -4,34 +4,34 @@
 	<form role="form">
 		<div class="form-group">
 			<label for="eventName" ng-model="eventInput">Event Name:</label>
-			<input type="eventName" class="form-control" id="email">
+			<input type="eventName" class="form-control" id="email" ng-model="ev.eventName">
 		</div>
 		<div class="dropdown">
 			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				Category
+				{{ev.category}}<span ng-if="!ev.category">Category</span>
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				<li><a href="#">Sports</a></li>
-				<li><a href="#">Arts</a></li>
-				<li><a href="#">Music</a></li>
-				<li><a href="#">Pset</a></li>
+				<li><a href="#" ng-click="setCategory(Sports)">Sports</a></li>
+				<li><a href="#" ng-click="setCategory(Arts)">Arts</a></li>
+				<li><a href="#" ng-click="setCategory(Music)">Music</a></li>
+				<li><a href="#" ng-click="setCategory(Pset)">Pset</a></li>
 			</ul>
 		</div>
 		<div class="form-group">
 			<label for="date" ng-model="dateInput">Date:</label>
-			<input type="date" class="form-control" id="time">
+			<input type="date" class="form-control" id="time" ng-model="ev.date">
 		</div>
 		<div class="form-group">
 			<label for="time" ng-model="timeInput">Time:</label>
-			<input type="time" class="form-control" id="time">
+			<input type="time" class="form-control" id="time" ng-model="ev.time">
 		</div>
 		<div class="form-group">
 			<label for="description" ng-model="descriptionInput">Description:</label>
-			<input type="description" class="form-control" id="description" size="100">
+			<input type="description" class="form-control" id="description" size="100" ng-model="ev.description">
 		</div>
 		
-		<button type="submit" class="btn btn-default">Create</button>
+		<button type="submit" class="btn btn-default" ng-click="createEvent()">Create</button>
 	</form>
 </body>
 </html>
