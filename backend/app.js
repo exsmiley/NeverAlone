@@ -157,6 +157,7 @@ app.post("/api/joinEvent", function(req, res) {
 				console.log(err);
 			}
 		})
+		console.log(user);
 	})
 })
 

@@ -75,6 +75,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 
 	// creates a new Event
 	$scope.createEvent = function() {
+		$scope.ev.address = $scope.getLocationForAddress($scope.ev.address);
 		$http.post('/api/new-event', $scope.ev)
 			.success(function(data) {
 				// clears the form since we do not need the data anymore
