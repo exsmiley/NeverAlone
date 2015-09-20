@@ -9,6 +9,19 @@ angapp.controller('mainController', function($scope, $http) {
 		$scope.showBob = !$scope.showBob;
 	}
 
+	$scope.isUserTab = function(number) {
+		if($scope.userTab === number) {
+			return 'active';
+		}
+		else {
+			return "nope";
+		}
+	}
+
+	$scope.clickUserTab = function(number) {
+		$scope.userTab = number;
+	}
+
 	// creates a new user
 	$scope.createUser = function() {
 		console.log("trying to post");
@@ -58,4 +71,10 @@ angapp.controller('mainController', function($scope, $http) {
 	$scope.logOut = function() {
 		$scope.isLoggedIn = false;
 	};
+
+	// uiGmapGoogleMapApi is a promise.
+    // The "then" callback function provides the google.maps object.
+    //uiGmapGoogleMapApi.then(function(maps) {
+
+    //});
 });

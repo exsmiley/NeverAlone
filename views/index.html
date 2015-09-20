@@ -9,14 +9,41 @@
   		<!-- load angular -->
   		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
   		<script src="/core.js"></script>
+  		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="/map"></script>
+  		<!--<style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>-->
 	</head>
 
 	<body ng-app="hackmit2015" ng-controller="mainController">
 		<div signin ng-hide="isLoggedIn"></div>
 		
 		<div navbar ng-show="isLoggedIn"></div>
-		<div home-main ng-show="isLoggedIn"></div>
-		<div profile ng-show="isLoggedIn"></div>
+		<div home-main ng-show="isLoggedIn&&userTab===0"></div>
+		<map ng-show="go||(isLoggedIn&&userTab===0)" zoom="11" center="[40.74, -74.18]">
+  <marker position="[40.74, -74.18]" />
+  <shape name="circle" radius="400" center="[40.74,-74.18]" radius="4000" />
+  <control name="overviewMap" opened="true" />
+</map>`  
+		<div profile ng-show="isLoggedIn&&userTab===1"></div>
+		<div create-event ng-show="isLoggedIn&&userTab===2"></div>
+		<!--<div id="map"></div>
+    <script type="text/javascript">
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+}
+
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJRznPmQx7jKwY7sF4Qh_DB-xXt1tN-oM&callback=initMap">
+    </script>-->
 		
 	</body>
 
@@ -26,4 +53,8 @@
 	<script src="/navBarDirective.js"></script>
 	<script src="/homeMainDirective.js"></script>
 	<script src="/profileDirective.js"></script>
+	<script src="/createEventDirective.js"></script>
+	<!--<script src="/maps"></script>
+	<script src="/logger"></script>-->
+	
 </html>
