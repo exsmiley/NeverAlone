@@ -1,12 +1,31 @@
-angapp.controller('mainController', function($scope, $http) {
+angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.formData = {};
 	$scope.name = "bob";
 	$scope.showBob = true;
 	$scope.isLoggedIn = false;
 	$scope.userTab = 0;
+	$scope.go = true;
+
+	//this makes the google map load then hide
+	$timeout(function() {
+		$scope.go = false;
+	}, 100);
 
 	$scope.toggleBob = function() {
 		$scope.showBob = !$scope.showBob;
+	}
+
+	$scope.isUserTab = function(number) {
+		if($scope.userTab === number) {
+			return 'active';
+		}
+		else {
+			return "nope";
+		}
+	}
+
+	$scope.clickUserTab = function(number) {
+		$scope.userTab = number;
 	}
 
 	// creates a new user
@@ -58,4 +77,10 @@ angapp.controller('mainController', function($scope, $http) {
 	$scope.logOut = function() {
 		$scope.isLoggedIn = false;
 	};
+
+	// uiGmapGoogleMapApi is a promise.
+    // The "then" callback function provides the google.maps object.
+    //uiGmapGoogleMapApi.then(function(maps) {
+
+    //});
 });

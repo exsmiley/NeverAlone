@@ -6,13 +6,13 @@
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-			<div class="navbar-header">
+			<div class="navbar-header" ng-click="clickUserTab(0)">
 				<a class="navbar-brand" href="#">ForeverAloneEvents</a>
 			</div>
 			<div>
 				<ul class="nav navbar-nav">
-					<li ng-class="{userTab===1: active}" id="1"><a href="#">Profile</a></li>
-					<li><a href="#" id="2">Create an Event</a></li>
+					<li class="{{isUserTab(1)}}" id="1" ng-click="clickUserTab(1)"><a href="#">Profile</a></li>
+					<li class="{{isUserTab(2)}}" ng-click="clickUserTab(2)"><a href="#" id="2">Create an Event</a></li>
 					<li><form class="navbar-form navbar-left" role="search">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Search">
