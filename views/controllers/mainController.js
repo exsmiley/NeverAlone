@@ -6,6 +6,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.userTab = 0;
 	$scope.go = true;
 	$scope.ev = {};
+	$scope.login = {};
 
 	//this makes the google map load then hide
 	$timeout(function() {
@@ -77,16 +78,35 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 
 	// creates a new account
 	$scope.createAccount = function() {
-		console.log("I'm doing something");
-		console.log($scope.formData);
 		$scope.createUser();
 		$scope.newEmail = "";
 		$scope.newPassword = "";
 		$scope.newCellNumber = "";
-		console.log("I don't care")
 	}
+
 	$scope.logIn = function() {
-		$scope.isLoggedIn = true;
+		console.log("work");
+		$http.post('/api/login', $scope.login)
+			.then(function(data) {
+				$scope.login = {};
+				if(!data) {
+					$scope.loginError = true;
+					data = {}
+					data.data = false;
+				}
+				$scope.isLoggedIn = data.data;
+				console.log("Login: " + data.data);
+				if($scope.isLoggedIn) {
+					$scope.loginError = false;
+				}
+			}, function(err) {
+				$scope.isLoggedIn = false;
+			});
+		if(!$scope.isLoggedIn) {
+			$scope.loginError = true;
+			console.log($scope.loginError);
+		}
+		//$scope.isLoggedIn = true;
 	};
 
 	$scope.logOut = function() {
