@@ -17,8 +17,9 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.userData.username = "zhated@sadface.com";
 	$scope.userData.cellNumber = "0000001111";
 	$scope.userData.interests = ["Sports"];
-	$scope.userData.attending = [];
-	$scope.userData.hosting = [];
+	$scope.userData.attending = ["55fe49a37b8944361b00000a",
+        "55fe4abe3219b68507000001"];
+	$scope.userData.hosting = ["55fe7428c4a0366f09000002"];
 
 	//this makes the google map load then hide
 	$timeout(function() {
@@ -38,6 +39,42 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		}
 	}
 
+	$scope.getAttending = function() {
+		console.log("I tried");
+		var evs = [];
+		$scope.eventObject();
+		$timeout(function() {
+			console.log($scope.userData.attending);
+			for(var i = 0; i<$scope.userData.attending.length; i++) {
+				evs.push($scope.eventO[$scope.userData.attending[i]]);
+			}
+			$scope.attending = evs;
+		}, 300);
+	}
+
+	$scope.getHosting = function() {
+		console.log("I tried");
+		var evs = [];
+		$scope.eventObject();
+		$timeout(function() {
+			console.log($scope.userData.hosting);
+			for(var i = 0; i<$scope.userData.hosting.length; i++) {
+				evs.push($scope.eventO[$scope.userData.hosting[i]]);
+			}
+			$scope.hosting = evs;
+		}, 300);
+	}
+
+	$scope.eventObject = function() {
+		$scope.getEvents();
+		$timeout(function() {
+			$scope.eventO = {};
+			for(var i = 0; i< $scope.events.length; i++) {
+				$scope.eventO[$scope.events[i]["_id"]] = $scope.events[i];
+			}
+		}, 200)
+		
+	}
 
 	$scope.clickUserTab = function(number) {
 		$scope.userTab = number;
@@ -77,6 +114,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	// creates a new Event
 	$scope.createEvent = function() {
 		$scope.getLocationForAddress($scope.ev.address);
+		$scope.ev.host = $scope.userData.username;
 		
 		$timeout(function() {
 			$http.post('/api/new-event', $scope.ev)
@@ -107,6 +145,15 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 
 	$scope.joinEvent = function(id) {
 		$http.post('/api/joinEvent', {id:id,username:$scope.userData.username})
+			.then(function(data) {
+				console.log("I worked")
+			}, function(err) {
+				console.log("Error: " + err);
+			})
+	}
+
+	$scope.hostEvent = function(id) {
+		$http.post('/api/hostEvent', {id:id,username:$scope.userData.username})
 			.then(function(data) {
 				console.log("I worked")
 			}, function(err) {
@@ -164,4 +211,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 				console.log(err);
 			})
 	}
+
+	$scope.getAttending();
+	$scope.getHosting();
 });

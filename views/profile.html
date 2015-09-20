@@ -35,9 +35,8 @@
           <div class="panel-heading"><h4>Events Attending</h4></div>
           <!-- List group -->
           <ul class="list-group">
-            <li class="list-group-item">This time</li>
-            <li class="list-group-item">Blah</li>
-            <li class="list-group-item">JDKLFASF;</li>
+            <li class="list-group-item" ng-repeat="a in attending">{{a.name}}</li>
+            <li class="list-group-item" ng-show="attending.length < 1">You are not attending any events</li>
           </ul>
         </div>
       </div>
@@ -47,9 +46,8 @@
           <div class="panel-heading"><h4>Events You're Hosting</h4></div>
           <!-- List group -->
           <ul class="list-group">
-            <li class="list-group-item">This time</li>
-            <li class="list-group-item">Blah</li>
-            <li class="list-group-item">JDKLFASF;</li>
+            <li class="list-group-item" ng-repeat="h in hosting">{{h.name}}</li>
+            <li class="list-group-item" ng-show="hosting.length < 1">You are not hosting any events</li>
           </ul>
         </div>
       </div>

@@ -46,7 +46,8 @@ var Event = mongoose.model('Event', {
 	date: String,
 	address: String,
 	description: String,
-	address: String
+	address: Object,
+	host: String
 });
 
 // API!!!!
@@ -105,7 +106,8 @@ app.post('/api/new-event', function(req, res) {
 		time: req.body.time,
 		date: req.body.date,
 		description: req.body.description,
-		address: req.body.address
+		address: req.body.address,
+		host: req.body.host
 	}, function(err, events) {
 		if(err) {
 			res.send(err);
@@ -170,12 +172,38 @@ app.post("/api/joinEvent", function(req, res) {
 	})
 })
 
+app.post("/api/hostEvent", function(req, res) {
+	User.findOne({username:req.body.username}, function(err, user) {
+		var arr = user.hosting
+		arr.push(req.body.id)
+		user.hosting = arr;
+
+		user.save(function(err) {
+			if(err) {
+				console.log(err);
+			}
+		})
+		console.log(user);
+	})
+})
+
 app.get('/api/events', function(req, res) {
 	Event.find(function(err, events) {
 		if(err) {
 			res.send(err);
 		}
 		res.json(events);
+	});
+});
+
+app.post('/api/getEvent', function(req, res) {
+	console.log(req.body.hi + "I'm a dude");
+	Event.findOne({_id: {"$oid": req.body.hi}}, function(err, ev) {
+		console.log(ev);
+		if(err) {
+			res.send(err);
+		}
+		res.json(ev);
 	});
 });
 
