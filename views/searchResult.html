@@ -12,14 +12,15 @@
 			<button type="button" class="btn btn-default" ng-click="searchRec()">
 				<span class="glyphicon glyphicon-search"></span> Search Recommended Events
 			</button>
+			<div search-my-events ng-show="isLoggedIn&&userTab===4"></div>
 			<table class="table table-hover" ng-show="isLoggedIn&&userTab!==4">
 				<tr><th>Name</th><th>Date</th><th>Time</th><th>Category</th><th></th>
-					<tr ng-hide="rec" ng-repeat="event in events | filter:searchText"><th class="col-md-3">{{event.name}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-2">{{event.time}}</th>
+					<tr ng-hide="rec" ng-repeat="event in events | filter:searchText"><th class="col-md-3">{{event.name}}</th><th class="col-md-2">{{event.host}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-2">{{event.time}}</th>
 						<th>{{event.category}}</th><th><button class="btn btn-default" data-toggle="collapse" data-target="#{{event._id}}">Detail</button><div id="{{event._id}}" class="collapse" style="font-size:10pt">
 						{{event.description}}
 					</div></th><th><button type="button" class="btn btn-default" ng-click="joinEvent(event._id)">Join</button></th></tr>
 
-					<tr ng-show="rec" ng-repeat="event in events | recSearch:userData.interests"><th class="col-md-3">{{event.name}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-2">{{event.time}}</th>
+					<tr ng-show="rec" ng-repeat="event in events | recSearch:userData.interests"><th class="col-md-3">{{event.name}}</th><th class="col-md-2">{{event.host}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-2">{{event.time}}</th>
 						<th>{{event.category}}</th><th><button class="btn btn-default" data-toggle="collapse" data-target="#{{event._id}}">Detail</button><div id="{{event._id}}" class="collapse" style="font-size:10pt">
 						{{event.description}}
 					</div></th><th><button type="button" class="btn btn-default" ng-click="joinEvent(event._id)">Join</button></th></tr>
