@@ -43,6 +43,7 @@ var Event = mongoose.model('Event', {
 	time: String,
 	date: String,
 	description: String,
+	address: String
 });
 
 // API!!!!
@@ -64,7 +65,8 @@ app.post('/api/new-user', function(req, res) {
 	User.create({
 		username: req.body.username,
 		password: req.body.password,
-		cellNumber: req.body.cellNumber
+		cellNumber: req.body.cellNumber,
+		interests: req.body.interests
 	}, function(err, user) {
 		if(err) {
 			res.send(err);
@@ -95,7 +97,8 @@ app.post('/api/new-event', function(req, res) {
 		category: req.body.category,
 		time: req.body.time,
 		date: req.body.date,
-		description: req.body.description
+		description: req.body.description,
+		address: req.body.address
 	}, function(err, events) {
 		if(err) {
 			res.send(err);
