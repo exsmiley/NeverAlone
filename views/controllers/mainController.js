@@ -2,7 +2,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.formData = {};
 	$scope.name = "bob";
 	$scope.showBob = true;
-	$scope.isLoggedIn = true;
+	$scope.isLoggedIn = false;
 	$scope.userTab = 0;
 	$scope.go = true;
 	$scope.ev = {};
@@ -138,8 +138,10 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 				return false
 			});
 		}, 200);
-		$scope.ev.name = "";
-		$scope.ev.category = null;
+		$timeout(function() {
+			$scope.ev.name = "";
+			$scope.ev.category = null;
+		}, 300);
 	}
 
 	//loads all of the events
@@ -153,6 +155,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	}
 
 	$scope.joinEvent = function(id) {
+		$scope.userData.attending.push(id);
 		$http.post('/api/joinEvent', {id:id,username:$scope.userData.username})
 			.then(function(data) {
 				console.log("I worked")
@@ -221,6 +224,6 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			})
 	}
 
-	$scope.getAttending();
-	$scope.getHosting();
+	/*$scope.getAttending();
+	$scope.getHosting();*/
 });
