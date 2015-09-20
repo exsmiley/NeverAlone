@@ -13,7 +13,12 @@
 				<ul class="nav navbar-nav">
 					<li class="{{isUserTab(1)}}" id="1" ng-click="clickUserTab(1)"><a href="#">Profile</a></li>
 					<li class="{{isUserTab(2)}}" ng-click="clickUserTab(2)"><a href="#" id="2">Create an Event</a></li>
-					<li><form class="form-inline" role="form"><input type="text" class="form-control" id="usr"></form></li>
+					<li><form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search">
+						</div>
+						<button type="submit" class="btn btn-default">Search</button>
+					</form></li>
 				</ul>
 			</div>
 		</div>
