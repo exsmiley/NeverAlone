@@ -8,6 +8,9 @@ var Schema = mongoose.Schema;
 var morgan = require('morgan');
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var expressSession = require("express-session");
+var cookieParser = require("cookie-parser");
+app.use(expressSession({secret:'derp'}));
 
 mongoose.connect('mongodb://me:you@ds051553.mongolab.com:51553/fun', function(err) {
 	if(err)
@@ -98,6 +101,36 @@ app.post('/api/new-event', function(req, res) {
 	});
 
 });
+
+// tells us if the user is logged in
+app.get('/api/loggedin', function(req, res) {
+	if(req.session.username) {
+		res.send(true);
+	}
+	res.send(false);
+});
+
+// logs in the user
+app.post('/api/login', function(req, res) {
+	//res.send(true);
+	User.find({username: req.body.username}, function(err, user) {
+		if(user&&user[0]) {
+			console.log(user[0].password);
+			console.log(req.body.password);
+			if(user[0].password === req.body.password) {
+				console.log("same")
+				req.session.username = user[0].username;
+				res.send(true);
+			}
+			else {
+				console.log("other")
+				res.send(false);
+			}
+		}
+		
+	})
+	//res.send(false);
+})
 
 //used for loading the homepage
 app.get("/", function(req, res) {
