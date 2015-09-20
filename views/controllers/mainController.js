@@ -5,6 +5,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.isLoggedIn = false;
 	$scope.userTab = 0;
 	$scope.go = true;
+	$scope.ev = {};
 
 	//this makes the google map load then hide
 	$timeout(function() {
@@ -28,6 +29,10 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		$scope.userTab = number;
 	}
 
+	$scope.selectCategory = function(cat) {
+		$scope.ev.category = cat;
+	}
+
 	// creates a new user
 	$scope.createUser = function() {
 		console.log("trying to post");
@@ -37,7 +42,6 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 				// clears the form since we do not need the data anymore
 				$scope.formData = {};
 				console.log("new user made!");
-				console.log(data);
 			})
 			.error(function(data) {
 				console.log("Error: " + data);
@@ -56,13 +60,22 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			});
 	};
 
+	// creates a new Event
+	$scope.createEvent = function() {
+		$http.post('/api/new-event', $scope.ev)
+			.success(function(data) {
+				// clears the form since we do not need the data anymore
+				$scope.ev = {};
+				console.log("new event made!");
+			})
+			.error(function(data) {
+				console.log("Error: " + data);
+			});
+	}
+
 	// creates a new account
 	$scope.createAccount = function() {
 		console.log("I'm doing something");
-		//$scope.formData = {};
-		/*$scope.formData.username = $scope.newEmail;
-		$scope.formData.password = $scope.newPassword;
-		$scope.formData.cellNumber = $scope.newCellNumber;*/
 		console.log($scope.formData);
 		$scope.createUser();
 		$scope.newEmail = "";

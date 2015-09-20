@@ -28,12 +28,13 @@ app.use(methodOverride());
 var User = mongoose.model('User', {
 	username: String, // username will just be the email of the person
 	password: String,
-	cellNumber: String
+	cellNumber: String,
+	interests: Array
 });
 
 var Event = mongoose.model('Event', {
 	name: String,
-	catagory: String,
+	category: String,
 	time: String,
 	date: String,
 	description: String,
@@ -77,6 +78,25 @@ app.delete('/api/users/:user_id', function(req, res) {
 		}
 		//should be deleted now
 	});
+});
+
+// create a user and send back his info
+app.post('/api/new-event', function(req, res) {
+	console.log("I am trying to make a new event");
+	//creates a user, info comes from AJAX request from Angular
+	console.log(req.body);
+	Event.create({
+		name: req.body.name,
+		category: req.body.category,
+		time: req.body.time,
+		date: req.body.date,
+		description: req.body.description
+	}, function(err, events) {
+		if(err) {
+			res.send(err);
+		}
+	});
+
 });
 
 //used for loading the homepage
