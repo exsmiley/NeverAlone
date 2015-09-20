@@ -1,9 +1,15 @@
-angapp.controller('mainController', function($scope, $http) {
+angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.formData = {};
 	$scope.name = "bob";
 	$scope.showBob = true;
 	$scope.isLoggedIn = false;
 	$scope.userTab = 0;
+	$scope.go = true;
+
+	//this makes the google map load then hide
+	$timeout(function() {
+		$scope.go = false;
+	}, 100);
 
 	$scope.toggleBob = function() {
 		$scope.showBob = !$scope.showBob;
