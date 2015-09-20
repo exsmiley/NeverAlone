@@ -262,6 +262,10 @@ app.get('/styleProfile', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/styleProfile.css'));
 })
 
+app.get('/searchStyle', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/searchStyle.css'));
+})
+
 var server = app.listen(process.env.PORT || 3000, function() {
 	var host = server.address().address;
 	var port = server.address().port;
