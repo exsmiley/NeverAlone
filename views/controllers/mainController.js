@@ -9,6 +9,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.login = {};
 	$scope.userData = {}
 	$scope.interests = []
+	var markers = [];
 	$scope.categories = ["Sports", "Arts", "Music", "Pset"];
 
 	//hard coded user
@@ -20,6 +21,8 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.userData.attending = ["55fe49a37b8944361b00000a",
         "55fe4abe3219b68507000001"];
 	$scope.userData.hosting = ["55fe7428c4a0366f09000002"];
+
+	$scope.startLocation = [42.358379,-71.096284];
 
 	//this makes the google map load then hide
 	$timeout(function() {
@@ -141,6 +144,11 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		$timeout(function() {
 			$scope.ev.name = "";
 			$scope.ev.category = null;
+			$scope.ev.address = "";
+			$scope.ev.time = "";
+			$scope.ev.date = "";
+			$scope.ev.description = "";
+			$scope.ev.host = null;
 		}, 300);
 	}
 
@@ -152,6 +160,27 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			}, function(err) {
 				console.log("Error: " + err);
 			})
+	}
+
+	//gets locations from all the events
+	$scope.getMarkers = function() {
+		$scope.getEvents();
+		$timeout(function() {
+			$scope.markers = [];
+			for(e in $scope.events) {
+				if($scope.events[e].address) {
+					var obj = [$scope.events[e].address.lng, $scope.events[e].address.lat];
+					if(obj[0]) {
+						var i = new google.maps.Marker();
+						i.setPosition(new google.maps.LatLng(obj[1], obj[0]));
+						i.setMap($scope.map);
+						markers.push(i);
+						$scope.markers.push(obj);
+					}
+				}
+			}
+			console.log($scope.markers);
+		}, 250);
 	}
 
 	$scope.joinEvent = function(id) {
@@ -224,6 +253,9 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			})
 	}
 
-	/*$scope.getAttending();
-	$scope.getHosting();*/
+	
+	$timeout(function() {
+		console.log($scope.map);
+		$scope.getMarkers();
+	})
 });
