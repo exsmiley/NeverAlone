@@ -8,6 +8,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.ev = {};
 	$scope.login = {};
 	$scope.userData = {}
+	$scope.categories = ["Sports", "Arts", "Music", "Pset"];
 
 	//hard coded user
 	$scope.userData.firstName = "Zach";
@@ -85,6 +86,8 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 				console.log("Error: " + data);
 				return false
 			});
+		$scope.ev.name = "";
+		$scope.ev.category = null;
 	}
 
 	//loads all of the events
@@ -92,6 +95,15 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		$http.get('/api/events', {})
 			.then(function(data) {
 				$scope.events = data.data;
+			}, function(err) {
+				console.log("Error: " + err);
+			})
+	}
+
+	$scope.joinEvent = function(id) {
+		$http.post('/api/joinEvent', {id:id,username:$scope.userData.username})
+			.then(function(data) {
+				console.log("I worked")
 			}, function(err) {
 				console.log("Error: " + err);
 			})
@@ -127,16 +139,19 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			$scope.loginError = true;
 			console.log($scope.loginError);
 		}
-		//$scope.isLoggedIn = true;
 	};
 
 	$scope.logOut = function() {
 		$scope.isLoggedIn = false;
 	};
 
-	// uiGmapGoogleMapApi is a promise.
-    // The "then" callback function provides the google.maps object.
-    //uiGmapGoogleMapApi.then(function(maps) {
-
-    //});
+	$scope.getLocationForAddress = function(address) {
+		var mod = address.replace(" ", "+");
+		$http.get("https://maps.googleapis.com/maps/api/geocode/json?" + mod + "&key=AIzaSyBJRznPmQx7jKwY7sF4Qh_DB-xXt1tN-oM")
+			.then(function(data) {
+				console.log(data);
+			}, function(err) {
+				console.log(err);
+			})
+	}
 });

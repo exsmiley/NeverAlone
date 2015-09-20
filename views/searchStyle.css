@@ -1,0 +1,13 @@
+body {
+	background: url('http://www.hungryforchange.tv/images/happypeople.jpg');
+	background-size: 100%;
+}
+
+button {
+	color: blue;
+}
+
+
+.container {
+   background: rgba(255,255,255,0.5);
+}

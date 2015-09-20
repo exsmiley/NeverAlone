@@ -34,7 +34,9 @@ var User = mongoose.model('User', {
 	lastName: String,
 	password: String,
 	cellNumber: String,
-	interests: Array
+	interests: Array,
+	attending: Array,
+	hosting: Array
 });
 
 var Event = mongoose.model('Event', {
@@ -142,6 +144,20 @@ app.post('/api/login', function(req, res) {
 		
 	})
 	//res.send(false);
+});
+
+app.post("/api/joinEvent", function(req, res) {
+	User.findOne({username:req.body.username}, function(err, user) {
+		var arr = user.attending
+		arr.push(req.body.id)
+		user.attending = arr;
+
+		user.save(function(err) {
+			if(err) {
+				console.log(err);
+			}
+		})
+	})
 })
 
 app.get('/api/events', function(req, res) {
@@ -244,6 +260,10 @@ app.get('/stylesheet', function(req, res) {
 
 app.get('/styleProfile', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/styleProfile.css'));
+})
+
+app.get('/searchStyle', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/searchStyle.css'));
 })
 
 var server = app.listen(process.env.PORT || 3000, function() {
