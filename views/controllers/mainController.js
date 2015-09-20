@@ -55,13 +55,9 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.getHosting = function() {
 		console.log("I tried");
 		var evs = [];
-		$scope.eventObject();
+		$scope.hostObject();
 		$timeout(function() {
-			console.log($scope.userData.hosting);
-			for(var i = 0; i<$scope.userData.hosting.length; i++) {
-				evs.push($scope.eventO[$scope.userData.hosting[i]]);
-			}
-			$scope.hosting = evs;
+			$scope.hosting = $scope.hostO[$scope.userData.username];
 		}, 300);
 	}
 
@@ -74,6 +70,19 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			}
 		}, 200)
 		
+	}
+
+	$scope.hostObject = function() {
+		$scope.getEvents();
+		$timeout(function() {
+			$scope.hostO = {};
+			for(var i = 0; i< $scope.events.length; i++) {
+				if(!$scope.hostO[$scope.events[i]["host"]]) {
+					$scope.hostO[$scope.events[i]["host"]] = [];	
+				}
+				$scope.hostO[$scope.events[i]["host"]].push($scope.events[i]);
+			}
+		}, 200)
 	}
 
 	$scope.clickUserTab = function(number) {
