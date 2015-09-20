@@ -8,6 +8,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.ev = {};
 	$scope.login = {};
 	$scope.userData = {}
+	$scope.interests = []
 	$scope.categories = ["Sports", "Arts", "Music", "Pset"];
 
 	//hard coded user
