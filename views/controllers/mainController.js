@@ -2,7 +2,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.formData = {};
 	$scope.name = "bob";
 	$scope.showBob = true;
-	$scope.isLoggedIn = true;
+	$scope.isLoggedIn = false;
 	$scope.userTab = 0;
 	$scope.go = true;
 	$scope.ev = {};
@@ -96,6 +96,15 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		$http.get('/api/events', {})
 			.then(function(data) {
 				$scope.events = data.data;
+			}, function(err) {
+				console.log("Error: " + err);
+			})
+	}
+
+	$scope.joinEvent = function(id) {
+		$http.post('/api/joinEvent', {id:id,username:$scope.userData.username})
+			.then(function(data) {
+				console.log("I worked")
 			}, function(err) {
 				console.log("Error: " + err);
 			})

@@ -12,7 +12,7 @@
 		<table class="table table-hover">
 			<tr><th>Name</th><th>Date</th><th>Time</th><th>Category</th><th>Join?</th>
 			<tr ng-repeat="event in events | filter:searchText"><th class="col-md-3">{{event.name}}</th><th class="col-md-3">{{event.date}}</th><th class="col-md-3">{{event.time}}</th>
-			<th>{{event.category}}</th><th><button>Join</button></th></tr>
+			<th>{{event.category}}</th><th><button ng-click="joinEvent(event._id)">Join</button></th></tr>
 		</table>
 	</div>
 </body>
