@@ -11,7 +11,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.interests = []
 	$scope.rec = false;
 	var markers = [];
-	$scope.categories = ["Sports", "Arts", "Music", "Pset"];
+	$scope.categories = ["Sports", "Arts", "Music", "Pset", "Food", "Movies", "Board Games", "Video Games", "Anime"];
 
 	//hard coded user
 	$scope.userData.firstName = "Zach";
