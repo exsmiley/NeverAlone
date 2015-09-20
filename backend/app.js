@@ -34,7 +34,7 @@ var User = mongoose.model('User', {
 	lastName: String,
 	password: String,
 	cellNumber: String,
-	interests: Array,
+	interests: Array
 });
 
 var Event = mongoose.model('Event', {
@@ -67,7 +67,11 @@ app.post('/api/new-user', function(req, res) {
 		username: req.body.username,
 		password: req.body.password,
 		cellNumber: req.body.cellNumber,
-		interests: req.body.interests
+		interests: req.body.interests,
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		attending: [],
+		hosting: []
 	}, function(err, user) {
 		if(err) {
 			res.send(err);
@@ -224,6 +228,14 @@ app.get('/searchResultDirective.js', function(req, res) {
 //send html templates
 app.get('/searchResult', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/searchResult.html'));
+})
+
+app.get('/searchMyEventsDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/searchMyEventsDirective.js'));
+})
+
+app.get('/s', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/searchMyEvents.html'));
 })
 
 app.get('/stylesheet', function(req, res) {

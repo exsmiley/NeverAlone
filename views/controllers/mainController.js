@@ -7,6 +7,16 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.go = true;
 	$scope.ev = {};
 	$scope.login = {};
+	$scope.userData = {}
+
+	//hard coded user
+	$scope.userData.firstName = "Zach";
+	$scope.userData.lastName = "is Hated";
+	$scope.userData.username = "zhated@sadface.com";
+	$scope.userData.cellNumber = "0000001111";
+	$scope.userData.interests = ["Sports"];
+	$scope.userData.attending = [];
+	$scope.userData.hosting = [];
 
 	//this makes the google map load then hide
 	$timeout(function() {
@@ -25,6 +35,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			return "nope";
 		}
 	}
+
 
 	$scope.clickUserTab = function(number) {
 		$scope.userTab = number;
