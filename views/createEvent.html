@@ -13,10 +13,10 @@
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><a href="#" ng-click="setCategory(Sports)">Sports</a></li>
-					<li><a href="#" ng-click="setCategory(Arts)">Arts</a></li>
-					<li><a href="#" ng-click="setCategory(Music)">Music</a></li>
-					<li><a href="#" ng-click="setCategory(Pset)">Pset</a></li>
+					<li><a href="#" ng-click="setCategory('Sports')">Sports</a></li>
+					<li><a href="#" ng-click="setCategory('Arts')">Arts</a></li>
+					<li><a href="#" ng-click="setCategory('Music')">Music</a></li>
+					<li><a href="#" ng-click="setCategory('Pset')">Pset</a></li>
 				</ul>
 			</div>
 			<div class="form-group">
@@ -26,6 +26,10 @@
 			<div class="form-group">
 				<label for="time" ng-model="timeInput">Time:</label>
 				<input type="datetime" class="form-control" id="time" ng-model="ev.time">
+			</div>
+			<div class="form-group">
+				<label for="address" ng-model="addressInput">Location:</label>
+				<input type="address" class="form-control" id="address" size="100" ng-model="ev.address">
 			</div>
 			<div class="form-group">
 				<label for="description" ng-model="descriptionInput">Description:</label>
