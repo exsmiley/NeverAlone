@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+h1{
+    font-family: 'Papyrus';
+    font-size: 500%;
+}
+
 body {
 	background: url('http://www.hungryforchange.tv/images/happypeople.jpg');
 	background-size: 100%;
@@ -6,4 +10,8 @@ body {
 
 button {
 	color: blue;
+}
+
+.panel {
+   background: rgba(152, 219, 201, 0.5);
 }
