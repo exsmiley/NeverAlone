@@ -31,6 +31,14 @@ var User = mongoose.model('User', {
 	cellNumber: String
 });
 
+var Event = mongoose.model('Event', {
+	name: String,
+	catagory: String,
+	time: String,
+	date: String,
+	description: String,
+});
+
 // API!!!!
 // returns all of the users... probably won't want this to always be a thing unless you're an admin
 app.get('/api/users', function(req, res) {
