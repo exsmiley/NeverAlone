@@ -19,7 +19,6 @@
 
 	<body ng-app="hackmit2015" ng-controller="mainController">
 		<div signin ng-hide="isLoggedIn"></div>
-		
 		<div navbar ng-show="isLoggedIn"></div>
 		<div home-main ng-show="isLoggedIn&&userTab===0"></div>
 		<map ng-show="go||(isLoggedIn&&userTab===0)" zoom="11" center="[42.358379,-71.096284]" id="map">
@@ -39,5 +38,5 @@
 	<script src="/homeMainDirective.js"></script>
 	<script src="/profileDirective.js"></script>
 	<script src="/createEventDirective.js"></script>
-	
+	<script src="/searchResultDirective.js"></script>
 </html>

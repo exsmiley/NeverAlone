@@ -74,6 +74,16 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 			});
 	}
 
+	//loads all of the events
+	$scope.getEvents = function() {
+		$http.get('/api/events', {})
+			.then(function(data) {
+				$scope.events = data.data;
+			}, function(err) {
+				console.log("Error: " + err);
+			})
+	}
+
 	// creates a new account
 	$scope.createAccount = function() {
 		$scope.createUser();

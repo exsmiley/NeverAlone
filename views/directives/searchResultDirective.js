@@ -1,6 +1,6 @@
-angapp.directive('searhcResult', function() {
+angapp.directive('searchResult', function() {
 	return {
 		restrict: "EA",
-		templateUrl: '/searhcResult'
+		templateUrl: '/searchResult'
 	}
 })
