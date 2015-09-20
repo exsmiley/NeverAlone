@@ -2,7 +2,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.formData = {};
 	$scope.name = "bob";
 	$scope.showBob = true;
-	$scope.isLoggedIn = false;
+	$scope.isLoggedIn = true;
 	$scope.userTab = 0;
 	$scope.go = true;
 	$scope.ev = {};
@@ -76,6 +76,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 
 	// creates a new Event
 	$scope.createEvent = function() {
+		$scope.ev.address = $scope.getLocationForAddress($scope.ev.address);
 		$http.post('/api/new-event', $scope.ev)
 			.success(function(data) {
 				// clears the form since we do not need the data anymore
@@ -122,14 +123,17 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		console.log("work");
 		$http.post('/api/login', $scope.login)
 			.then(function(data) {
-				$scope.login = {};
-				if(!data) {
+				if(!data.data.username) {
 					$scope.loginError = true;
 					data = {}
-					data.data = false;
+					$scope.isLoggedIn = false;
 				}
-				$scope.isLoggedIn = data.data;
-				console.log("Login: " + data.data);
+				else {
+					$scope.isLoggedIn = true;
+					$scope.userData = data.data;
+					console.log($scope.userData);
+				}
+				console.log("Login: " + $scope.isLoggedIn);
 				if($scope.isLoggedIn) {
 					$scope.loginError = false;
 				}
