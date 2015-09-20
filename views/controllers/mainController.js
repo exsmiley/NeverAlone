@@ -76,8 +76,10 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 
 	// creates a new Event
 	$scope.createEvent = function() {
-		$scope.ev.address = $scope.getLocationForAddress($scope.ev.address);
-		$http.post('/api/new-event', $scope.ev)
+		$scope.getLocationForAddress($scope.ev.address);
+		
+		$timeout(function() {
+			$http.post('/api/new-event', $scope.ev)
 			.success(function(data) {
 				// clears the form since we do not need the data anymore
 				$scope.ev = {};
@@ -88,6 +90,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 				console.log("Error: " + data);
 				return false
 			});
+		}, 200);
 		$scope.ev.name = "";
 		$scope.ev.category = null;
 	}
@@ -152,9 +155,11 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 
 	$scope.getLocationForAddress = function(address) {
 		var mod = address.replace(" ", "+");
-		$http.get("https://maps.googleapis.com/maps/api/geocode/json?" + mod + "&key=AIzaSyBJRznPmQx7jKwY7sF4Qh_DB-xXt1tN-oM")
-			.then(function(data) {
-				console.log(data);
+		var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + mod + "&key=AIzaSyBJRznPmQx7jKwY7sF4Qh_DB-xXt1tN-oM";
+		console.log(url);
+		$http.get(url, {})
+			.then(function(data, err) {
+				$scope.ev.address = data.data.results[0].geometry.location
 			}, function(err) {
 				console.log(err);
 			})
