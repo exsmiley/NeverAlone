@@ -9,6 +9,7 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 	$scope.login = {};
 	$scope.userData = {}
 	$scope.interests = []
+	$scope.rec = false;
 	var markers = [];
 	$scope.categories = ["Sports", "Arts", "Music", "Pset"];
 
@@ -29,8 +30,22 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 		$scope.go = false;
 	}, 100);
 
+	$scope.searchRec = function() {
+		$scope.rec = !$scope.rec;
+	}
+
 	$scope.toggleBob = function() {
 		$scope.showBob = !$scope.showBob;
+	}
+
+	$scope.saveInterest = function(i) {
+		for(var j = 0; j < $scope.interests.length; j++) {
+			if($scope.interests[j] === i) {
+				$scope.interests = $scope.interests.slice(0,j).concat($scope.interests.slice(j+1,$scope.interests.length));
+				return;
+			}
+		}
+		$scope.interests.push(i);
 	}
 
 	$scope.isUserTab = function(number) {
@@ -98,10 +113,18 @@ angapp.controller('mainController', function($scope, $http, $timeout) {
 
 	// creates a new user
 	$scope.createUser = function() {
+		$scope.formData.interests = $scope.interests;
 		console.log("trying to post");
 		$http.post('/api/new-user', $scope.formData)
 			.success(function(data) {
 				console.log("hi");
+				
+				$timeout(function() {
+					$scope.login = {};
+					$scope.login.username = $scope.formData.username;
+					$scope.login.password = $scope.formData.password;
+					$scope.logIn()
+				}, 200);
 				// clears the form since we do not need the data anymore
 				$scope.formData = {};
 				console.log("new user made!");

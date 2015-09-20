@@ -10,7 +10,8 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var expressSession = require("express-session");
 var cookieParser = require("cookie-parser");
-app.use(expressSession({secret:'derp'}));
+app.use(expressSession({secret:'derp', resave: true,
+    saveUninitialized: true}));
 
 mongoose.connect('mongodb://me:you@ds051553.mongolab.com:51553/fun', function(err) {
 	if(err)

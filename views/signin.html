@@ -67,21 +67,8 @@
                   <div class="form-group">
                     <label for="interests">Interests:</label>
                     <div class="checkbox">
-                    <script type="text/javascript">
-                    function saveInterest(catagory) {
-                      interests.push(catagory);
-                    }</script>
-                      <label>
-                      <input type="checkbox" onclick="saveInterest(this)"> Sport
-                      </label>
-                      <label>
-                      <input type="checkbox" onclick="saveInterest(this)"> Arts
-                      </label>
-                      <label>
-                      <input type="checkbox" onclick="saveInterest(this)"> Music
-                      </label>
-                      <label>
-                      <input type="checkbox" onclick="saveInterest(this)"> Pset
+                      <label ng-repeat="c in categories">
+                      <input type="checkbox" ng-click="saveInterest(c)"> {{c}}
                       </label>
                     </div>
                   </div>
