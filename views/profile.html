@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">
-        <h2>Hello, {{user.firstName}}!</h2>
+        <h2>Hello, {{userData.firstName}}!</h2>
       </div>
       <div class="col-md-8">
         <button type="button" class="btn btn-info btn-lg" ng-click="clickUserTab(2)">Host an event</button>
@@ -20,9 +20,7 @@
           <div class="panel-heading"><h4>Interests</h4></div>
           <!-- List group -->
           <ul class="list-group">
-            <li class="list-group-item">Sports</li>
-            <li class="list-group-item">Music</li>
-            <li class="list-group-item">PSetting</li>
+            <li class="list-group-item" ng-repeat="interest in userData.interests">{{interest}}</li>
           </ul>
         </div>
       </div>

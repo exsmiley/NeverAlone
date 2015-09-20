@@ -34,7 +34,7 @@ var User = mongoose.model('User', {
 	lastName: String,
 	password: String,
 	cellNumber: String,
-	interests: Array,
+	interests: Array
 });
 
 var Event = mongoose.model('Event', {
@@ -67,7 +67,11 @@ app.post('/api/new-user', function(req, res) {
 		username: req.body.username,
 		password: req.body.password,
 		cellNumber: req.body.cellNumber,
-		interests: req.body.interests
+		interests: req.body.interests,
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		attending: [],
+		hosting: []
 	}, function(err, user) {
 		if(err) {
 			res.send(err);
