@@ -135,6 +135,15 @@ app.get('/createEvent', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/createEvent.html'));
 })
 
+app.get('/searchResultDirective.js', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/directives/searchResultDirective.js'));
+})
+
+//send html templates
+app.get('/searchResult', function(req, res) {
+	res.sendfile(path.join(__dirname+'/../views/searchResult.html'));
+})
+
 app.get('/stylesheet', function(req, res) {
 	res.sendfile(path.join(__dirname+'/../views/stylesheet.css'));
 })

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<!-- events is the list containing all upcoming events, and searchText is the
+	text from the search box-->
+	<p ng-repeat="event in events | filter:searchText">
+		<div class="row">
+			<table>
+				<tr><th class="col-md-3">{{eventName}}</th><th class="col-md-3">Date</th><th class="col-md-3">Time</th></tr>
+				<tr><th>Category</th><th><button>Join</button></th></tr>
+				<tr><th>Description</th></tr>
+			</table>
+		</p>
+	</body>
+	</html>
